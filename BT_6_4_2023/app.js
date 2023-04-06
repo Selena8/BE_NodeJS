@@ -19,11 +19,7 @@ const port = 3000; // Định nghĩa cổng để chạy ứng dụng NodeJS c�
 // Require user route
 const userRoute = require('./router/user')
 
-app.set('views', './views'); // Thư mục views nằm cùng cấp với file app.js
-app.set('view engine', 'pug'); // Sử dụng pug làm view engine
 
-app.use(express.json()) // for parsing application/json
-app.use(express.urlencoded({ extended: true })) // for parsing application/x-www-form-urlencoded
 
 // Dùng userRoute cho tất cả các route bắt đầu bằng '/users'
 app.use('/users', userRoute);
