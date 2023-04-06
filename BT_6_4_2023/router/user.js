@@ -145,7 +145,7 @@ res.status(200).json(user);
 });
 
 // Update user by id
-router.put('/:id', (req, res) => {
+router.put('/:id', (req, res, next) => {
 const id = req.params.id;
 const index = users.findIndex((user) => user.id === parseInt(id));
 if (index === -1) {
@@ -157,14 +157,14 @@ res.status(204).send();
 });
 
 // Add new user
-router.post('/', (req, res) => {
+router.post('/', (req, res, next) => {
 const newUser = { id: users.length + 1, ...req.body };
 users.push(newUser);
 res.status(201).json(newUser);
 });
 
 // Delete user by id
-router.delete('/:id', (req, res) => {
+router.delete('/:id', (req, res, next) => {
 const id = req.params.id;
 const index = users.findIndex((user) => user.id === parseInt(id));
 if (index === -1) {
