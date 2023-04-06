@@ -1,4 +1,5 @@
-import{validateUser} from "../middleware/validateUser"
+const { validateUser } = require('../middleware/validateUser');
+
 const express = require('express');
 const router = express.Router();
 
@@ -63,5 +64,6 @@ users.splice(index, 1);
 res.status(204).send();
 }
 });
+
 
 module.exports = router;
