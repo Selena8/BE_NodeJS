@@ -1,9 +1,7 @@
-const Validate = require('../middleware/validate')
+const val = require('../NodeApp/middleware/validate')
 
 const express = require('express')
 const user_router = express.Router();
-
-user_router.use(express.json())//json -> object
 
 let  users = [
     {
@@ -24,13 +22,13 @@ user_router.get('/',(req, res) => {
     res.status(200).send(users)
 })
 
-user_router.post('/', Validate, (req, res) => {
+user_router.post('/', val, (req, res) => {
 	const user = {
         'id': users.length + 1,
         ...req.body
 	}
 	users.push(user)
-	res.status(201).json('Ban da them thanh cong')
+	res.status(201).json(user)
 })
 
 user_router.put('/:id', (req, res) => {
@@ -39,15 +37,15 @@ user_router.put('/:id', (req, res) => {
 		user.fullname = req.body.fullname
 		user.gender = req.body.gender
 		user.age = req.body.age
-		res.status(200).json(user)
+		res.status(200).json('Cap nhat thanh cong')
 	} else {
-		res.status(204).json()
+		res.status(204).json('Cap nhat that bai')
 	}
 })
 
 user_router.delete('/:id', (req, res) => {
 	users = users.filter(item => item.id !== parseInt(req.params.id))
-	res.status(204).json()
+	res.status(200).json('Xoa thanh cong')
 })
 
 module.exports = user_router

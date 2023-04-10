@@ -1,12 +1,13 @@
-function Validate(req, res, next) {
+function val(req, res, next) {
     const user = {
         ...req.body
 	}
-    if(user.age <= 0){
-        res.status(400).send('Ban phai nhap tuoi > 0')
+    const regex = /^[a-zA-ZÀÁÂÃÈÉÊÌÍÒÓÔÕÙÚĂĐĨŨƠàáâãèéêìíòóôõùúăđĩũơƯĂẠẢẤẦẨẪẬẮẰẲẴẶẸẺẼỀỀỂẾưăạảấầẩẫậắằẳẵặẹẻẽềềểếỄỆỈỊỌỎỐỒỔỖỘỚỜỞỠỢỤỦỨỪễệỉịọỏốồổỗộớờởỡợụủứừỬỮỰỲỴÝỶỸửữựỳỵỷỹ\s\W|_]+$/;
+    if(!regex.test(user.fullname)){
+        res.status(400).send('Hay nhap lai ten')
     } else {
         next()
     }
 }
 
-module.exports = Validate
+module.exports = val
