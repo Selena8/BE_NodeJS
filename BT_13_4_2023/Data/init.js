@@ -1,7 +1,12 @@
 const connection = require('./connection');
 connection.query("create table user(id INT AUTO_INCREMENT PRIMARY KEY, fullname nvarchar(255) NOT NULL,gender tinyint(1), age INT CHECK (age > 0));", (err, result) => {
+  if (err) {
     console.log(err);
-})
+  } else {
+    console.log(result);
+  }
+});
+
 const user = [
     {
         "name" : "Nguyen Thi Minh Nguyet",
