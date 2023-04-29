@@ -1,5 +1,3 @@
-// Hashing
-
 const crypto = require('crypto');
 const rawPassword = "nguyet982002"
 
@@ -11,7 +9,7 @@ function hashWithSHA512(input) {
 
     return output
 }
-// Hash password with salt
+
 function hashWithSalt(input) {
     const salt = crypto.randomBytes(16).toString('hex')
     const output = crypto.pbkdf2Sync(

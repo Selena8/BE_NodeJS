@@ -1,11 +1,9 @@
 const express = require('express');
 const jwt = require('jsonwebtoken')
 const router = express.Router();
+const db = require('../database/connection');
 const {validateUserUpdate } = require('../middleware/validateUser')
 const { update } = require('../database/query')
-
-
-const db = require('../database/connection');
 router.put('/:id', validateUserUpdate, async function (req, res, next) {
     const secret = process.env.SECRET
     const id = req.params.id
