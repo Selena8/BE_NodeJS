@@ -32,13 +32,13 @@ router.post('/register', validateRequest, validateUserRegister, async (req, res)
     const isUserExisted = await db.select().from('users').where('username', req.body.username).first()
     if(isUserExisted) {
         return res.status(400).json( {
-            message: 'Username already exists'
+            message: 'username already exists!'
         })
     }
     // console.log(hashedPassword);
     await db.insert(user).into('users')
     return res.status(200).json({
-        message: 'Register successfully'
+        message: 'register successfully!'
     })
 })
 
@@ -73,12 +73,12 @@ router.post('/login', validateRequest, async function (req, res) {
             })
             return res.status(200).json({ 
                 data: jwt,
-                message: "Login successful"
+                message: "login successfully!"
             })
         }
         else {
             return res.status(400).json( {
-                message: 'Invalid password',
+                message: 'invalid password!',
             })
         }
     }
@@ -99,11 +99,11 @@ router.post('/test', async (req, res) => {
             subjectEmail: subjectEmail, 
             textEmail: textEmail})
         return res.status(200).json({
-            "message": "reset password email sent successfully"
+            "message": "reset password email sent successfully!"
         })
     } catch (error) {
         return res.status(500).json({
-            "message": "error sending email"
+            "message": "error sending mail!"
         })
     }
 })

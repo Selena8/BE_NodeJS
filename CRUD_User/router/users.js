@@ -64,9 +64,9 @@ route.post("/create", authenticate, validateUserRegister, async (req, res) => {
         isAdmin: req.body.isAdmin,
         };
         await db.insert(user).into("users");
-        return res.status(201).json({ message: "created successful" });
+        return res.status(201).json({ message: "created successfully" });
     }
-    return res.status(200).json({ message: "Username already exists" });
+    return res.status(200).json({ message: "Error: username already exists!" });
 });
 
 // update
@@ -77,7 +77,7 @@ route.put("/:id", authenticate, async (req, res) => {
         gender: req.body.gender,
         isAdmin: req.body.isAdmin,
     });
-    return res.status(200).json({ message: "update successful" });
+    return res.status(200).json({ message: "update successfully" });
 });
 
 // pagination, search by name
@@ -114,6 +114,6 @@ route.get("/getUsers", async (req, res) => {
 // delete
 route.delete("/:id", authenticate, async (req, res) => {
     await db("users").where("id", req.params.id).del();
-    return res.status(200).json({ message: "delete successful" });
+    return res.status(200).json({ message: "delete successfully!" });
 });
 module.exports = route;
